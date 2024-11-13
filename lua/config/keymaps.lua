@@ -6,3 +6,4 @@ map('n', '<Leader>r', '<C-r>', opts)
 map('n', '<Leader>l', 'V', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+map('n', ':', '<cmd>FineCmdline<CR>', opts)
