@@ -8,11 +8,26 @@ end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
+M.capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
+
 M.defaults = function()
-  vim.lsp.config("*", {
-    capabilities = M.capabilities,
-    on_init = M.on_init,
-  })
+    vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
 end
 
 return M
