@@ -13,6 +13,8 @@ require('lazy').setup({
 	{ import = "specs" }
 })
 
+require('options')
+
 vim.schedule(function()
 	require'mappings'
 end)
