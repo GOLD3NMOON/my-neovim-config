@@ -4,7 +4,7 @@ map('n', ';', ':', { desc = 'Cmd command mode' })
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Explorer' })
 
 map("n", "<leader>.", function()
-  require("menu").open("default")
+  require("menu").open(require('configs.menu').config)
 end, { desc = 'Open context menu' })
 
 map({ "n", "v" }, "<RightMouse>", function()
@@ -13,7 +13,7 @@ map({ "n", "v" }, "<RightMouse>", function()
   vim.cmd.exec '"normal! \\<RightMouse>"'
 
   local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or require('configs.menu').config
 
   require("menu").open(options, { mouse = true })
 end, { desc = 'Open context menu' })
@@ -35,3 +35,12 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+
+map('i', '<CR>', function()
+  local cmp = require('blink-cmp')
+  if cmp.is_menu_visible() then
+    cmp.accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true)
+  end
+end, { noremap = true, silent = true })

@@ -1,6 +1,15 @@
 return {
-	keymap = { preset = 'default' },
-	completion = {
+	keymap = {
+    preset = 'default',
+    -- ['<CR>'] = function(cmp)
+    --       if cmp.is_menu_visible() and cmp.get_selected_entry() then
+    --         return { 'accept' }
+    --       else
+    --         return { vim.api.nvim_replace_termcodes('<CR>', true, true, true) }
+    --       end
+    --     end,
+  },
+  completion = {
 		keyword = { range = 'full' },
 		accept = {
 			auto_brackets = { enabled = false },
@@ -12,7 +21,7 @@ return {
 			}
 		},
 		menu = {
-			auto_show = false,
+			auto_show = true,
 			draw = {
 				columns = {
 					{ "label", "label_description", gap = 1 },

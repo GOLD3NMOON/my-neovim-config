@@ -1,7 +1,7 @@
 return {
   {
     "nvzone/menu",
-    lazy = true
+    lazy = true,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -25,6 +25,12 @@ return {
     opts = {
       fast_wrap = {},
       disable_filetype = { "TelescopePrompt", "vim" },
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
     },
   },
 }

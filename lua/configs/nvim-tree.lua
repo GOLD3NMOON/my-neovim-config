@@ -1,5 +1,13 @@
 return {
-	filters = { dotfiles = false },
+	filters = {
+    dotfiles = false,
+    custom = {
+      ".*__pycache__.*"
+    },
+    exclude = {
+      ".*__pycache__.*"
+    }
+  },
 	disable_netrw = true,
 	hijack_cursor = true,
 	sync_root_with_cwd = true,
